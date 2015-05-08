@@ -1,5 +1,5 @@
 # PHP_FileUpload
-一个php做的实现文件上传和下载功能的项目
+一个php做的实现文件异步上传和下载功能的项目，其中使用了jquery1.11和ajaxfileupload.js这个第三方的文件异步上传的js库。
 
 制作环境：
   Windows:6.3 (with WampServer:2.5
