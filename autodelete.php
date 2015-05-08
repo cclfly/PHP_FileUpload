@@ -1,6 +1,9 @@
 <?php
 	date_default_timezone_set("Asia/Chongqing");
 	
+	@mkdir(iconv("utf-8", "gb2312", "file/临时文件"));
+	@mkdir(iconv("utf-8", "gb2312", "file/永久文件"));
+	
 	function hours_min($start_time,$end_time){ 
 		if (strtotime($start_time) > strtotime($end_time)) 
 			list($start_time, $end_time) = array($end_time, $start_time);
