@@ -2,10 +2,11 @@ function onDirChange()
 {
 	$('#filelist').empty();
 	
-	$.post(
-		"selectfile.php",
-		{"dir":$('#seldir').val()},
-		function(data){
+	$.ajax({
+		type:"post",
+		url:"selectfile.php",
+		data:"dir="+$('#seldir').val(),
+		success:function(data){
 			var aDatas=new Array();
 			
 			data.sort(function(a,b){return JSON.parse(a)['stamp']<JSON.parse(b)['stamp']?1:-1;});
@@ -13,7 +14,7 @@ function onDirChange()
 			{
 				aDatas=JSON.parse(data[i]);
 				
-				$('#filelist').append("<tr><td><div id='manage'><a href='"+aDatas['src']+"'><img class='open' src='./img/open-1.gif' title='打开' oncontextmenu='return false;' onselectstart='return false;' /></a><a href='"+aDatas['src']+"' download='download'><img class='download' src='./img/download-1.gif' title='下载' oncontextmenu='return false;' onselectstart='return false;' /></a><a href='javascript:;'><img class='delete' src='./img/delete-1.gif' title='删除' oncontextmenu='return false;' onselectstart='return false;' /></a></div></td><td>"+aDatas['name']+"</td><td>"+aDatas['time']+"</td><td>"+(mime_type[aDatas['type']]?mime_type[aDatas['type']]:aDatas['type'])+"</td><td class='filesize'>"+aDatas['size']+"</td></tr>");
+				$('#filelist').append("<tr><td><div id='manage'><a href='"+aDatas['src']+"'><img class='open' src='./img/open-1.gif' title='打开' oncontextmenu='return false;' onselectstart='return false;' /></a><a href='"+aDatas['src']+"' download='download'><img class='download' src='./img/download-1.gif' title='下载' oncontextmenu='return false;' onselectstart='return false;' /></a><a href='javascript:;'><img class='delete' src='./img/delete-1.gif' title='删除' oncontextmenu='return false;' onselectstart='return false;' /></a></div></td><td>"+aDatas['name']+"</td><td>"+aDatas['time']+"</td><td>"+(mime_type[aDatas['type'].toLowerCase()]?mime_type[aDatas['type'].toLowerCase()]:aDatas['type'].toLowerCase())+"</td><td class='filesize'>"+aDatas['size']+"</td></tr>");
 			}
 			
 			var aOpen=document.getElementsByClassName('open');
@@ -50,8 +51,8 @@ function onDirChange()
 				};
 			}
 		},
-		"json"
-	);
+		dataType:"json"
+	});
 }
 
 function MessageOnConsole()

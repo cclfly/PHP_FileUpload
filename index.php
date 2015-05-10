@@ -27,7 +27,7 @@
 				<table cellspacing="0">
 					<thead>
 						<tr>
-							<td width="7%"></td><td width="53%">名称</td><td width="20%">上传时间</td><td width="10%">类型</td><td width="10%">大小</td>
+							<td width="7%"></td><td width="51%">名称</td><td width="20%">上传时间</td><td width="12%">类型</td><td width="10%">大小</td>
 						</tr>
 					</thead>
 					<tbody id="filelist"></tbody>

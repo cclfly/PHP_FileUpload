@@ -13,7 +13,7 @@
 			$filesrc=iconv("gb2312", "utf-8", $dirpath."/".$file);
 			$filetime=date("Y年n月j日 G:i:s",filemtime($dirpath."/".$file));
 			$filestamp=filemtime($dirpath."/".$file);
-			$filetype=mime_content_type($dirpath."/".$file);
+			$filetype=@strstr($file,".")?@array_pop(explode(".", $file)):"";
 			$filesize=filesize($dirpath."/".$file);
 			$filesize=$filesize<1024?"<1 KB":(($filesize/=1024)<1024?number_format($filesize,2)." KB":(($filesize/=1024)<1024?number_format($filesize,2)." MB":(($filesize/=1024)<1024?number_format($filesize,2)." GB":(">1 TB"))));
 			

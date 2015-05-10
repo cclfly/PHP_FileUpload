@@ -1,6 +1,7 @@
 <?php
 	date_default_timezone_set("Asia/Chongqing");
 	
+	@mkdir(iconv("utf-8", "gb2312", "file"));
 	@mkdir(iconv("utf-8", "gb2312", "file/临时文件"));
 	@mkdir(iconv("utf-8", "gb2312", "file/永久文件"));
 	
